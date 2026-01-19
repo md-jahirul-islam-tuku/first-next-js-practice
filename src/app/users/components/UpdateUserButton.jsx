@@ -30,7 +30,7 @@ export default function UpdateUserButton({ user }) {
 
     if (!formValues) return;
 
-    const res = await fetch(`http://localhost:3000/api/items/${user._id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items/${user._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export default function UpdateUserButton({ user }) {
       Swal.fire("Error", "Failed to update user", "error");
     }
   };
-
+ 
   return (
     <button
       onClick={handleUpdateUser}

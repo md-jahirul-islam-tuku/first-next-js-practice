@@ -18,7 +18,7 @@ export default function DeleteUserButton({ userId }) {
 
     if (!result.isConfirmed) return;
 
-    const res = await fetch(`http://localhost:3000/api/items/${userId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items/${userId}`, {
       method: "DELETE",
     });
 

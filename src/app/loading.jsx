@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function loading() {
+export default function Loading() {
   return (
-    <div className='place-items-center place-content-center min-h-screen'>
-      <h1>Loading....</h1>
+    <div className="min-h-screen flex justify-center items-center">
+      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-lime-500"></div>
     </div>
   );
 }
