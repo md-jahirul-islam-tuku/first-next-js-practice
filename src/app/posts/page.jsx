@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const poppins = Poppins({
-  weight: '400',
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -13,12 +13,17 @@ export const metadata = {
 };
 
 export default async function Posts() {
-  const data = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await fetch("https://jsonplaceholder.typicode.com/posts", {
+    cache: "force-cache",
+  });
   const posts = await data.json();
   return (
     <div className={`grid grid-cols-3 gap-5 mt-10`}>
       {posts.map((post) => (
-        <div key={post.id} className={`w-88 border rounded-xl p-4 ${poppins.className}`}>
+        <div
+          key={post.id}
+          className={`w-88 border rounded-xl p-4 ${poppins.className}`}
+        >
           <h1 className="text-3xl">{post.title}</h1>
           <p>{post.body}</p>
           <Link href={`/posts/${post.id}`}>

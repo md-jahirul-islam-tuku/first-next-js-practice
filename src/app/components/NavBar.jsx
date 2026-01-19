@@ -33,6 +33,9 @@ export default function NavBar() {
           <Link href={"/meals"}>
             <li>Meals</li>
           </Link>
+          <Link href={"/users"}>
+            <li>Users</li>
+          </Link>
         </ul>
       </nav>
     </div>
