@@ -38,6 +38,7 @@ export default async function MealsPage({ searchParams }) {
               width={1200}
               height={600}
               className="w-full h-auto"
+              loading="lazy"
             />
             <p>{meal.strMeal}</p>
             <p>{meal.strInstructions.slice(0, 160)}</p>
