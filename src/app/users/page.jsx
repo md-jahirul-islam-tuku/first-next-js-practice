@@ -3,8 +3,8 @@ import DeleteUserButton from "./components/DeleteUserButton";
 import UpdateUserButton from "./components/UpdateUserButton";
 
 export default async function UsersPage() {
-  const res = await fetch("http://localhost:3000/api/items", {
-    cache: "force-cache",
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items`, {
+    cache: "no-store",
   });
 
   const users = await res.json();
@@ -12,9 +12,7 @@ export default async function UsersPage() {
   return (
     <div className="p-6">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-xl font-semibold">
-          All Users: {users.length}
-        </h1>
+        <h1 className="text-xl font-semibold">All Users: {users.length}</h1>
 
         <AddUserButton />
       </div>
