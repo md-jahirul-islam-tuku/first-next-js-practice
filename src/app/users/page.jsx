@@ -4,7 +4,7 @@ import UpdateUserButton from "./components/UpdateUserButton";
 
 export default async function UsersPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/items`, {
-    cache: "no-store",
+    cache: "force-cache",
   });
 
   const users = await res.json();

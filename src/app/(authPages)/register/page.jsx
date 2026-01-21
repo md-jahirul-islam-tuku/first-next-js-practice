@@ -27,7 +27,7 @@ export default function RegisterPage() {
           type="email"
           name="email"
           placeholder="Email"
-          className="border p-2 rounded-lg"
+          className="border p-2 rounded-lg my-3"
           required
         />
         <br />
@@ -35,7 +35,7 @@ export default function RegisterPage() {
           type="password"
           name="password"
           placeholder="password"
-          className="border p-2 rounded-lg mt-2"
+          className="border p-2 rounded-lg"
           required
         />
         <br />

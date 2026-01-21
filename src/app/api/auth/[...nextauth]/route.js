@@ -1,6 +1,8 @@
 import { dbConnect } from "@/app/lib/dbConnect";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions = {
   providers: [
@@ -45,8 +47,25 @@ export const authOptions = {
         }
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
   ],
   callbacks: {
+    async signIn({ user, account, profile, credentials }) {
+      if (account) {
+        const { name, email } = user;
+        const { provider, providerAccountId } = account;
+        const payload = { provider, providerAccountId, username: name, email };
+        console.log("From payload", payload);
+      }
+      return true;
+    },
     async session({ session, token, user }) {
       if (token) {
         session.user.email = token.email;
