@@ -48,9 +48,17 @@ export const authOptions = {
   ],
   callbacks: {
     async session({ session, token, user }) {
+      if (token) {
+        session.user.email = token.email;
+        session.user.password = token.password;
+      }
       return session;
     },
     async jwt({ token, user, account, profile, isNewUser }) {
+      if (user) {
+        token.email = user.email;
+        token.password = user.password;
+      }
       return token;
     },
   },
