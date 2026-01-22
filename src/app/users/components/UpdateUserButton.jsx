@@ -37,6 +37,7 @@ export default function UpdateUserButton({ user }) {
       },
       body: JSON.stringify(formValues),
     });
+    console.log("res from update button", res)
 
     if (res.ok) {
       Swal.fire("Updated!", "User updated successfully", "success");

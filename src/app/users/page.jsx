@@ -1,3 +1,4 @@
+import { GET } from "../api/items/route";
 import AddUserButton from "./components/AddUserButton";
 import DeleteUserButton from "./components/DeleteUserButton";
 import UpdateUserButton from "./components/UpdateUserButton";

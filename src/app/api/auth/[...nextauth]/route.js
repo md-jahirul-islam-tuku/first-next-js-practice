@@ -59,10 +59,24 @@ export const authOptions = {
   callbacks: {
     async signIn({ user, account, profile, credentials }) {
       if (account) {
-        const { name, email } = user;
-        const { provider, providerAccountId } = account;
-        const payload = { provider, providerAccountId, username: name, email };
-        console.log("From payload", payload);
+        try {
+          const { name, email } = user;
+          const { provider, providerAccountId } = account;
+          const payload = {
+            provider,
+            providerAccountId,
+            username: name,
+            email,
+          };
+          const userData = dbConnect("testUser");
+          const isUser = await userData.findOne({ providerAccountId });
+          if (!isUser) {
+            await userData.insertOne(payload);
+          }
+        } catch (error) {
+          console.log(error);
+          return false;
+        }
       }
       return true;
     },
